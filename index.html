@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>		
+	<!--<script type="text/javascript" src="js/operator.js" ></script>-->
+		<!--<script>
+			if(!document.getElementById("none"))
+			{
+				document.write("none");
+			}
+			var a=new Boolean(true);
+			document.write(a.toString()+" "+a.valueOf());
+		</script>-->
+		<script>
+			var s="hello world";
+			document.write(s.indexOf("o")+" ");
+			document.write(s.indexOf("o",s.indexOf("o")+1));
+			document.write(" "+s.indexOf("a"));
+			var s2="1 plus 1 equals 3";
+			s2=s2.replace("1","2");
+			s2=s2.replace(/\d+/g,"$& dollor");
+			document.write(" "+s2);
+			s3=s2.split(" ");
+			document.write(" "+s3);
+			s4=s2.split(" ",3);
+			document.write(" "+s4);
+			s5=s2.split(/\d/);
+			document.write(" "+s5);
+			var n=3.1415926;
+			n=n.toFixed(2);
+			document.write(n);
+		</script>
+	</body>
+</html>
+
