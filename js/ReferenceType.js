@@ -1,24 +1,24 @@
 var person=new Object();
 person.name="Ray";
-write(person.name);
+println(person.name);
 var a="hello";
 var b=a;
-write(a);write(b);
+println(a);println(b);
 b="world";
-write(a);write(b);
+println(a);println(b);
 var name="Ray";
 name.age=23;
-write(name.age);
+println(name.age);
 var person2=person;
 person2.age=23;
-write(person.age);
+println(person.age);
 var person3=new Object();
 person3.name="Ray"
 function setName(obj){
 	obj.name="Ramiy";
 }
 setName(person3);
-write(person3.name);
+println(person3.name);
 function setName2(obj){
 	obj.name="Moon";
 	obj=new Object();
@@ -26,13 +26,13 @@ function setName2(obj){
 }
 var person4=new Object();
 setName2(person4);
-write(person4.name);
-write(person instanceof Object);
-write(new Array() instanceof Array);
-write(typeof write);
-write(write instanceof Function);
+println(person4.name);
+println(person instanceof Object);
+println(new Array() instanceof Array);
+println(typeof println);
+println(println instanceof Function);
 var reg=new RegExp("[abc]");
-write(typeof reg);
-write(reg instanceof Object);
-write(reg instanceof RegExp);
-write(type(reg));
+println(typeof reg);
+println(reg instanceof Object);
+println(reg instanceof RegExp);
+println(type(reg));

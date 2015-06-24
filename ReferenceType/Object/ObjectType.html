@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="../../js/base.js" ></script>
+	</head>
+	<body>
+		<script>
+			var person={
+				5:true
+			};
+			println(person[5]);
+			var displayInfo=function(args){
+				var output="";
+				if(typeof args.name==="string")
+				{
+					output+="name:"+args.name+"\n";
+				}
+				if(typeof args.age==="numberx")
+				{
+					output+="age:"+args.age+"\n";
+				}
+				println(output);
+			}
+			displayInfo({
+				name:"Ray"
+			});
+			displayInfo({
+				age:23
+			});
+			displayInfo({
+				name:"Ray",
+				age:23
+			});
+		</script>
+	</body>
+</html>

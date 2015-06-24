@@ -1,7 +1,7 @@
-function write(value){
+var println=function(value){
 	document.write(value+"<br>");
 }
-function type(value){
+var  type=function(value){
 	var result;
 	if(typeof value!=="object")
 	{

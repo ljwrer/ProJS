@@ -2,17 +2,17 @@
 //var o={
 //	name:"ray"
 //};
-//write(o.constructor);
-//write(o.hasOwnProperty(name));
-//write(o.toString());
-//write(o.valueOf());
-//write(o++);
-//write(o);
-//write(-26%Infinity);
-//write(true+"5");
+//println(o.constructor);
+//println(o.hasOwnProperty(name));
+//println(o.toString());
+//println(o.valueOf());
+//println(o++);
+//println(o);
+//println(-26%Infinity);
+//println(true+"5");
 ////for(var name in window)
 ////{
-////	write(name);
+////	println(name);
 ////}
 //var obj={
 //	p1:1,
@@ -24,18 +24,18 @@
 //	var s2=p2;
 //	var s3=p3;
 //}
-//write(s1+s2+s3);
+//println(s1+s2+s3);
 function doAdd(num1,num2){
 	"use strict"
 	arguments[1]=10;
 	arguments[1]=5;
 	return num1+num2;
 }
-write(doAdd(1,2));
+println(doAdd(1,2));
 
 function func(a) {
     arguments[0] = 2
-    write(arguments[0])
-    write(a)// 2
+    println(arguments[0])
+    println(a)// 2
 }  
 func(1);

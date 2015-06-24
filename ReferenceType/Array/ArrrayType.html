@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="../../js/base.js" ></script>
+	</head>
+	<body>
+		<script>
+			var a=new Array("red","blue","green");
+			println(a.length);
+			println(Object.prototype.toString.call(a));
+			println(a.toString());
+			println(a.valueOf());
+			var person1={
+				toLocaleString:function(){
+					return "hello";
+				},
+				toString:function(){
+					return "world";
+				}
+			};
+			a[a.length]=person1;
+			println(a.toString());
+			println(a.valueOf());
+			println(a.toLocaleString());
+			println(a.join("。。。"));
+			a[5]="yellow";
+			println(a.join("。。。"));
+			println(a);
+			println(a.pop());
+			println(a);
+			a.pop();
+			println(a);
+			var count=a.push("yellow","blue");
+			println(count);
+			println(a);
+			println(a.shift());
+			println(a);
+			println(a.unshift("red","orange"));
+			println(a);
+			println(a.reverse());
+			println(a);
+			a=[0,1,5,10,15];
+			println(a.sort());
+			println(a);
+			var compare=function(value1,value2){
+				if(value1<value2)
+				{
+					return 1;
+				}
+				else if(value1>value2)
+				{
+					return -1;
+				}
+				else{
+					return 0;
+				}
+			}
+			a.sort(compare);
+			println(a);
+			var compare2=function(value1,value2){
+				return value1-value2;
+			}
+			a.sort(compare2);
+			println(a); 
+//			println(a.sort());
+		</script>
+	</body>
+</html>

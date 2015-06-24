@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="../js/base.js" ></script>
+		<script>
+			function addTen(num){
+				num+=10;
+				return num;
+			}
+			var count=20;
+			var result=addTen(count);
+			println(count);
+			println(result);
+			function setName(Obj){
+				Obj.name="Ray";
+			}
+			var person=new Object();
+			setName(person);
+			println(person.name);
+			function setAge(Obj){
+				Obj.age=23;
+				Obj=new Object();
+				Obj.age=25;
+			}
+			var person2=new Object();
+			setAge(person2);
+			println(person2.age);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
