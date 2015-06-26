@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="../../js/base.js" ></script>
+	</head>
+	<body>
+	</body>
+	<script>
+		var p=/.at/gi;
+		var s="catn";
+		println(s.match(p));
+		println(p.test(s));
+		var p2=new RegExp(".at","gi");
+		println(p==p2);
+		var p3=null;var i;
+		var s3="catqqqqqq"
+		println("   ");
+		for(i=0;i<10;i++)
+		{
+			p3=/cat/gi;
+			println(p3.test("catqqqqqq"));
+		}
+	</script>
+</html>

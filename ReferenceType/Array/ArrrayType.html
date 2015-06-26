@@ -65,6 +65,28 @@
 			a.sort(compare2);
 			println(a); 
 //			println(a.sort());
+		var person1={name:"Ray"};
+		var person2={name:"Ray"};
+		println(person1===person2);
+		var value=[1,2,3,4,5];
+		var result=value.reduce(function(prev,cur,index,array){
+			return prev+cur;
+		})
+		println(result);
+		var today=new Date();
+		println(today);
+		println(new Date(2000,0));
+		println(new Date(Date.parse("6/13/2014")));
+		println(new Date(Date.UTC(2000,0)));
+		println(Date.now());
+		println(today.toString());
+		println(today.valueOf());
+		println(today.toLocaleDateString());
+		println(today.toLocaleString());
+		println(today.getTimezoneOffset());
+		var day=new Date(2000,0);
+		day.setMilliseconds(100);
+		println(day);
 		</script>
 	</body>
 </html>
