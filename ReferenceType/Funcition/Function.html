@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="../../js/base.js" ></script>
+	</head>
+	<body>
+		<script>
+			println(sum(1,2));
+//			var sum=function(num1,num2){
+//				return num1+num2;
+//			}
+			function sum(num1,num2){
+				return num1+num2;
+			}
+			function fac(num){
+				if(num<=1)
+				{
+					return 1;
+				}
+				else
+				{
+					return num*arguments.callee(num-1);
+				}
+			}
+			println(fac(5));
+		</script>
+	</body>
+</html>
