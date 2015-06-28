@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="../js/base.js" ></script>
+	</head>
+	<body>
+		<script>
+			var Person=function(){
+				
+			};
+			Person.prototype.name="Ray";
+			println(Person.prototype.constructor==Person);
+			person1=new Person();
+			println(person1.__proto__.constructor);
+			println(person1.__proto__.constructor==Person);
+			println(person1.__proto__.constructor==Person.prototype.constructor);
+			println(Person.prototype.isPrototypeOf(person1));
+			println(Object.getPrototypeOf(person1)==Person.prototype);
+			println(Object.getPrototypeOf(person1).name);
+			person2=new Person();
+			person2.name="Rmaiy";
+			println(person1.name);
+			println(person2.name);
+			println(person1.constructor.prototype.name);
+			println(person2.constructor.prototype.name);
+			println(person1.hasOwnProperty("name"));
+			println(person2.hasOwnProperty("name"));
+			println(Object.getOwnPropertyDescriptor(person2,"name").value);
+			println(Object.getOwnPropertyDescriptor(person2,"name").writable);			
+			println(Object.getOwnPropertyDescriptor(person1,"name"));
+			println(Object.getOwnPropertyDescriptor(person1.constructor.prototype,"name"));
+			println(Object.getOwnPropertyDescriptor(Object.getPrototypeOf(person1),"name"));
+			println(Object.keys(Person.prototype));
+			println(Object.keys(person2));
+			println(Object.getOwnPropertyNames(Person.prototype))
+			
+		</script>
+	</body>
+</html>

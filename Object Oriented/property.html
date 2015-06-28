@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="../js/base.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<script>
+			var person={
+				_name:"Ray"
+			};
+			person.__defineGetter__("name",function(){
+				return this._name;
+			});
+			alert(person.name);
+		</script>
+	</body>
+</html>
