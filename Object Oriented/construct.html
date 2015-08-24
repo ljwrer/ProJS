@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script>
+			 //			function Person(){
+			 //				
+			 //			};
+			 //			var person=new Person();
+			 //			var person={};
+			 //			alert(person);
+			 //			alert(person.constructor)
+			 //			alert(person instanceof Person)
+			 //			alert(Object.prototype.toString.call(person).slice(8,-1));
+			 //			alert(person.__proto__.constructor==person.constructor)
+			 //			alert(Person.prototype.isPrototypeOf(person))
+			 //			alert(Object.getPrototypeOf(person)===person.__proto__)
+			 //			Person.prototype={};
+			 //			alert(Person.prototype)
+			 //			function Person(){
+			 //			}
+			 //			Person.prototype = {
+			 //			constructor: Person,
+			 //			name : "Nicholas",
+			 //			age : 29,
+			 //			job : "Software Engineer",
+			 //			friends : ["Shelby", "Court"],
+			 //			sayName : function () {
+			 //			alert(this.name);
+			 //			}
+			 //			};
+			 //			var person1 = new Person();
+			 //			var person2 = new Person();
+			 //			person1.friends.pop();
+			 //			alert(person1.friends); //"Shelby,Court,Van"
+			 //			alert(person2.friends); //"Shelby,Court,Van"
+			 //			alert(person1.friends === person2.friends); //true
+			function Person(name, age, job){
+			//创建要返回的对象
+			var o = new Object();
+			//可以在这里定义私有变量和函数
+			//添加方法
+			o.sayName = function(){
+				alert(name);
+			};
+			//返回对象
+			return o;
+		}
+			var person = Person("Ray",18,"FE");
+			person.sayName()
+		</script>
+	</body>
+
+</html>

@@ -7,86 +7,91 @@
 	</head>
 	<body>
 		<script>
-			var a=new Array("red","blue","green");
-			println(a.length);
-			println(Object.prototype.toString.call(a));
-			println(a.toString());
-			println(a.valueOf());
-			var person1={
-				toLocaleString:function(){
-					return "hello";
-				},
-				toString:function(){
-					return "world";
-				}
-			};
-			a[a.length]=person1;
-			println(a.toString());
-			println(a.valueOf());
-			println(a.toLocaleString());
-			println(a.join("。。。"));
-			a[5]="yellow";
-			println(a.join("。。。"));
-			println(a);
-			println(a.pop());
-			println(a);
-			a.pop();
-			println(a);
-			var count=a.push("yellow","blue");
-			println(count);
-			println(a);
-			println(a.shift());
-			println(a);
-			println(a.unshift("red","orange"));
-			println(a);
-			println(a.reverse());
-			println(a);
-			a=[0,1,5,10,15];
-			println(a.sort());
-			println(a);
-			var compare=function(value1,value2){
-				if(value1<value2)
-				{
-					return 1;
-				}
-				else if(value1>value2)
-				{
-					return -1;
-				}
-				else{
-					return 0;
-				}
-			}
-			a.sort(compare);
-			println(a);
-			var compare2=function(value1,value2){
-				return value1-value2;
-			}
-			a.sort(compare2);
-			println(a); 
+//			var a=new Array("red","blue","green");
+//			println(a.length);
+//			println(Object.prototype.toString.call(a));
+//			println(a.toString());
+//			println(a.valueOf());
+//			var person1={
+//				toLocaleString:function(){
+//					return "hello";
+//				},
+//				toString:function(){
+//					return "world";
+//				}
+//			};
+//			a[a.length]=person1;
+//			println(a.toString());
+//			println(a.valueOf());
+//			println(a.toLocaleString());
+//			println(a.join("。。。"));
+//			a[5]="yellow";
+//			println(a.join("。。。"));
+//			println(a);
+//			println(a.pop());
+//			println(a);
+//			a.pop();
+//			println(a);
+//			var count=a.push("yellow","blue");
+//			println(count);
+//			println(a);
+//			println(a.shift());
+//			println(a);
+//			println(a.unshift("red","orange"));
+//			println(a);
+//			println(a.reverse());
+//			println(a);
+//			a=[0,1,5,10,15];
 //			println(a.sort());
-		var person1={name:"Ray"};
-		var person2={name:"Ray"};
-		println(person1===person2);
-		var value=[1,2,3,4,5];
-		var result=value.reduce(function(prev,cur,index,array){
-			return prev+cur;
-		})
-		println(result);
-		var today=new Date();
-		println(today);
-		println(new Date(2000,0));
-		println(new Date(Date.parse("6/13/2014")));
-		println(new Date(Date.UTC(2000,0)));
-		println(Date.now());
-		println(today.toString());
-		println(today.valueOf());
-		println(today.toLocaleDateString());
-		println(today.toLocaleString());
-		println(today.getTimezoneOffset());
-		var day=new Date(2000,0);
-		day.setMilliseconds(100);
-		println(day);
+//			println(a);
+//			var compare=function(value1,value2){
+//				if(value1<value2)
+//				{
+//					return 1;
+//				}
+//				else if(value1>value2)
+//				{
+//					return -1;
+//				}
+//				else{
+//					return 0;
+//				}
+//			}
+//			a.sort(compare);
+//			println(a);
+//			var compare2=function(value1,value2){
+//				return value1-value2;
+//			}
+//			a.sort(compare2);
+//			println(a); 
+////			println(a.sort());
+//		var person1={name:"Ray"};
+//		var person2={name:"Ray"};
+//		println(person1===person2);
+//		var value=[1,2,3,4,5];
+//		var result=value.reduce(function(prev,cur,index,array){
+//			return prev+cur;
+//		})
+//		println(result);
+//		var today=new Date();
+//		println(today);
+//		println(new Date(2000,0));
+//		println(new Date(Date.parse("6/13/2014")));
+//		println(new Date(Date.UTC(2000,0)));
+//		println(Date.now());
+//		println(today.toString());
+//		println(today.valueOf());
+//		println(today.toLocaleDateString());
+//		println(today.toLocaleString());
+//		println(today.getTimezoneOffset());
+//		var day=new Date(2000,0);
+//		day.setMilliseconds(100);
+//		println(day);
+//		var a=[1,2,3,"asd",function(){alert("x")},{a:1}];
+//		println(Array.isArray(a));
+//		println(Object.prototype.toString.call(a).slice(8,-1).toLowerCase());
+//		alert(a.valueOf()+" "+a.toString()+" "+a.toLocaleString())
+		var a=new Date();
 		</script>
 	</body>
 </html>
