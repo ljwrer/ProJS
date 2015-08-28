@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script>
+			var text = "ssscatsddfdsbat";
+			var pattern = /.at/g;
+			var matches = text.match(pattern);
+			var text = "cat, bat, sat, fat";
+			var  result = text.replace(/(.at)/g, "word ($1)");
+			alert(result);
+		</script>
+	</body>
+
+</html>

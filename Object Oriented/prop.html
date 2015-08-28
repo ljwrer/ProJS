@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var book={};
+			Object.defineProperties(book,{
+				year:{
+					value:2015
+				}
+			})
+			
+			var des=Object.getOwnPropertyDescriptor(book,"year");
+			for(x in des){
+				console.log(x+":"+des[x]);
+			}
+		</script>
+	</body>
+</html>

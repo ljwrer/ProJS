@@ -1,19 +1,64 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="utf-8">
 		<title></title>
 		<script src="../js/base.js" type="text/javascript" charset="utf-8"></script>
 	</head>
+
 	<body>
 		<script>
-			var person={
-				_name:"Ray"
-			};
-			person.__defineGetter__("name",function(){
-				return this._name;
-			});
-			alert(person.name);
+			 //			var person1={
+			 //				_name:"Ray",
+			 //				age:18
+			 //			};
+			 //			person1.__defineGetter__("name",function(){
+			 //				return this._name;
+			 //			});
+			 //			console.log(person1.name);
+			 //			var des=Object.getOwnPropertyDescriptor(person1,"name");
+			 //			for(x in des){
+			 //				console.log(x+":"+des[x]);
+			 //			}
+			 //			for(x in person1){
+			 //				console.log(x+":"+person1[x]);
+			 //			}
+			 //			var person2={};
+			 //			Object.defineProperty(person2,"name",{
+			 //				value:"Ray"
+			 //			});
+			 //						console.log(person2.name);
+			 //			var des=Object.getOwnPropertyDescriptor(person2,"name");
+			 //			for(x in des){
+			 //				console.log(x+":"+des[x]);
+			 //			}
+			 //			for(x in person2){
+			 //				console.log(x+":"+person2[x]);
+			 //			}
+			var person3 = {};
+			Object.defineProperties(person3, {
+				_name: {
+					value: "Ray"
+				},
+				name:{
+					get:function(){
+						return this._name;
+					},
+					set:function(value){
+						this._name=value;
+					}
+				}
+			})
+			console.log(person3.name);
+			var des = Object.getOwnPropertyDescriptor(person3, "name");
+			for (x in des) {
+				console.log(x + ":" + des[x]);
+			}
+			for (x in person3) {
+				console.log(x + ":" + person3[x]);
+			}
 		</script>
 	</body>
+
 </html>

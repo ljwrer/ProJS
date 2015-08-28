@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script>
+//			var person = {
+//				name: "Ray",
+//				_age:18
+//			};
+//			Object.defineProperty(person,"age",{
+//				set:function(value){
+//					if(value>=this._age){
+//						this._age=value;
+//					}
+//				},
+//				get:function(){
+//					return this._age;
+//				}
+//			})
+//			person.age = 2;
+//			console.log(person.age);
+			var book={
+				_year:2005,
+				editon:3
+			};
+//			book.__defineGetter__("year",function(){
+//				return ++this._year;
+//			})
+//			console.log(book.year)
+//			console.log(book._year)
+			Object.defineProperties(book,{
+				year:{
+					value:2005,
+//					writable: true
+				},
+				edition:{
+					value:3,
+					writable:true
+				},
+//				year:{
+//					get:function(){
+//						return this._year;
+//					},
+//					set:function(value){
+//						if(value>=this._year){
+//							this._year=value;
+//							this.edition++;
+//						}
+//					},
+//					configurable:true,
+//					enumerable:true
+//				}
+			});
+			book.year=2006;
+			console.log(book.year)
+			var des=Object.getOwnPropertyDescriptor(book,"year");
+			for(x in des){
+				console.log(x+":"+des[x]);
+			}
+//			var des=Object.getOwnPropertyDescriptor(book,"year");
+//			for(x in des){
+//				console.log(x+":"+des[x]);
+//			}
+//			book.year=2200;
+//			console.log(book.year);
+//			console.log(book._year);
+//			console.log(book.edition)
+//			console.log(Object.getOwnPropertyDescriptor(book,"editon").writable)
+		</script>
+	</body>
+
+</html>
