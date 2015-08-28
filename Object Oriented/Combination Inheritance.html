@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script>
+			function SuperType(name) {
+				this.name = name;
+				this.color = ["red", "blue", "green"];
+			}
+			SuperType.prototype.sayName = function() {
+				alert(this.name);
+			}
+
+			function SubType(name, age) {
+				SuperType.call(this, name);
+				this.age = age;
+			}
+			SubType.prototype = new SuperType();
+			SubType.prototype.constructor = SubType;
+			SubType.prototype.sayAge = function() {
+				alert(this.age);
+			}
+			var ins1 = new SubType("Ray", 18);
+			ins1.color.push("yellow");
+			 //			ins1.sayAge();
+			 //			ins1.sayName();
+			 ////			alert(ins1.color);
+			 //			var ins2 = new SubType("Rmaiy", 24);
+			 //			ins2.sayAge();
+			 //			ins2.sayName();
+			 //			alert(ins2.color);
+			function SuperType(name) {
+				this.name = name;
+				this.colors = ["red", "blue", "green"];
+			}
+			SuperType.prototype.sayName = function() {
+				alert(this.name);
+			};
+
+			function SubType(name, age) {
+				SuperType.call(this, name); //第二次调用 SuperType()
+				this.age = age;
+			}
+			SubType.prototype = new SuperType(); //第一次调用 SuperType()
+			SubType.prototype.constructor = SubType;
+			SubType.prototype.sayAge = function() {
+				alert(this.age);
+			};
+
+			function SuperType(name) {
+				this.name = name;
+				this.colors = ["red", "blue", "green"];
+			}
+			SuperType.prototype.sayName = function() {
+				alert(this.name);
+			};
+
+			function SubType(name, age) {
+				SuperType.call(this, name);
+				this.age = age;
+			}
+			inheritPrototype(SubType, SuperType);
+			SubType.prototype.sayAge = function() {
+				alert(this.age);
+			};
+		</script>
+	</body>
+
+</html>

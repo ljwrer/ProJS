@@ -1,67 +1,104 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="utf-8">
 		<title></title>
-		<script type="text/javascript" src="../js/base.js" ></script>
+		<script type="text/javascript" src="../js/base.js"></script>
 	</head>
+
 	<body>
 		<script>
-//			var a=new Function();
-//			a();
-			var f=function(a){
-				return function(b){
-					println(a.age+"+"+b+"="+(a.age+b));
-				}
-			};
-			var f1=f({age:1});
-			f1(2);
-			var f2=f({age:2});
-			f2(2);
-			f1(2);
-			function createFunctions(){
-				var result=new Array();
-//				for(var i=0;i<10;i++)
-//				{
-//					result[i]=(function(num){
-//						return function(){
-//							return num;
-//						}
-//					})(i);
+			 //			var a=new Function();
+			 //			a();
+			 //			var f=function(a){
+			 //				return function(b){
+			 //					println(a.age+"+"+b+"="+(a.age+b));
+			 //				}
+			 //			};
+			 //			var f1=f({age:1});
+			 //			f1(2);
+			 //			var f2=f({age:2});
+			 //			f2(2);
+			 //			f1(2);
+			 //			function createFunctions(){
+			 //				var result=new Array();
+			 //				for(var i=0;i<10;i++)
+			 //				{
+			 //					result[i]=(function(num){
+			 //						return function(){
+			 //							return num;
+			 //						}
+			 //					})(i);
+			 //				}
+			 //				var help=function(i){
+			 //					return function(){
+			 //						return i;
+			 //					}
+			 //				};
+			 //				for(var i=0;i<10;i++)
+			 //				{
+			 //					result[i]=help(i);
+			 //				}
+			 //				
+			 //				return result;
+			 //			};
+			 //			var cF=createFunctions();
+			 //			for(var i=0;i<10;i++)
+			 //			{
+			 //				println(cF[i]());
+			 //			}
+			 //			(function(){
+			 //				var name="";
+			 //				Person=function(value){
+			 //					name=value;
+			 //				};
+			 //				Person.prototype.getName=function(){
+			 //					return name;
+			 //				};
+			 //				Person.prototype.setName=function(value){
+			 //					name=value;
+			 //				};
+			 //			})();
+			 //			var person1=new Person("Ray");
+			 //			println(person1.getName());
+			 //			println(person1.hasOwnProperty("name"));
+			 //			function add(){
+			 //				var i=1;
+			 //				return function(){
+			 //					var j=1;
+			 //					alert("i="+i++);
+			 //					alert("j="+j++);
+			 //				}
+			 //			}
+			 //			var f=add();
+			 //			var f1=add();
+			 //			f();
+			 //			f1();
+			 //			f();
+			 //			f1();
+//			function compare(value1, value2) {
+//				var x=10
+//				return function(){
+//					alert(value1+" "+value2+" "+x);
 //				}
-				var help=function(i){
-					return function(){
-						return i;
+//			}
+//			var result = compare(5, 10);
+//			result();
+			function f(a){
+				var b=2;
+				function f1(c){
+					var d=3;
+					function f2(e){
+						var f=4;
+						alert(b);
 					}
-				};
-				for(var i=0;i<10;i++)
-				{
-					result[i]=help(i);
+					f2(d);
 				}
-				
-				return result;
-			};
-			var cF=createFunctions();
-			for(var i=0;i<10;i++)
-			{
-				println(cF[i]());
+				f1(b);
 			}
-			(function(){
-				var name="";
-				Person=function(value){
-					name=value;
-				};
-				Person.prototype.getName=function(){
-					return name;
-				};
-				Person.prototype.setName=function(value){
-					name=value;
-				};
-			})();
-			var person1=new Person("Ray");
-			println(person1.getName());
-			println(person1.hasOwnProperty("name"));
-			
+			f(1);
 		</script>
 	</body>
+
 </html>

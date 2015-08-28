@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script>
+			function object(o) {
+				function F() {}
+				F.prototype = o;
+				return new F();
+			}
+			var person = {
+				name: "Nicholas",
+				friends: ["Shelby", "Court", "Van"]
+			};
+			var anotherPerson = object(person);
+			anotherPerson.name = "Greg";
+			anotherPerson.friends.push("Rob");
+			var yetAnotherPerson = object(person);
+			yetAnotherPerson.name = "Linda";
+			yetAnotherPerson.friends.push("Barbie");
+			 //alert(person.friends); //Shelby,Court,Van,Rob,Barbie
+			 //alert(anotherPerson.friends);
+			 //alert(yetAnotherPerson.friends)
+			 //alert(person.name); //Shelby,Court,Van,Rob,Barbie
+			 //alert(anotherPerson.name);
+			 //alert(yetAnotherPerson.name)
+			alert(anotherPerson.constructor);
+		</script>
+	</body>
+
+</html>
