@@ -3,8 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        #drag {
+            width: 200px;
+            height: 200px;
+            background: deepskyblue;
+        }
+    </style>
 </head>
 <body>
+<div id="parent">hello
+    <div id="child">world</div>
+</div>
+<div id="child2">haha</div>
+<ul id="myList">
+    <li>item 1</li>
+    <li>item 2</li>
+    <li>item 3</li>
+</ul>
 <script>
     function convertToArray(nodes) {
         var array = null;
@@ -18,6 +34,31 @@
         }
         return array;
     }
+    var child = document.getElementById('child');
+    var child2 = document.getElementById('child2');
+    var parent = document.getElementById('parent');
+    parent.onclick = function (evt) {
+        if (child.parentNode === parent) {
+            var ret = parent.removeChild(child2);
+            alert(ret === child2)
+
+        }
+    }
+    var myList = document.getElementById('myList');
+    myList.normalize();
+    var debounce = function (func, wait) {
+        var timeout;
+        return function (){
+            timeout&&clearTimeout(timeout);
+            timeout=setTimeout(func,wait);
+        }
+    }
+    var db=debounce(function(){
+        console.log(1)
+    },3000);
+    db();
+    db();
+
 </script>
 </body>
 </html>

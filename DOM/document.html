@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<iframe src="iframe.html"></iframe>
+<legend>Which color do you prefer?</legend>
+<ul>
+    <li><input type="radio" value="red" name="color" id="colorRed">
+        <label for="colorRed">Red</label></li>
+    <li><input type="radio" value="green" name="color" id="colorGreen">
+        <label for="colorGreen">Green</label></li>
+    <li><input type="radio" value="blue" name="color" id="colorBlue">
+        <label for="colorBlue">Blue</label></li>
+</ul>
+<script>
+    document.domain="bbgstatic.com";
+    var item2="item2";
+    var inputs=document.getElementsByTagName('input');
+    console.log(inputs.namedItem('color'))
+</script>
+<script type="text/javascript">
+    document.write("<strong>" + (new Date()).toString() + "</strong>");
+</script>
+</body>
+</html>
