@@ -5,13 +5,10 @@
 </head>
 <body>
 <p>This is some content that you won't get to see because it will be overwritten.</p>
+<input type="text" name="name" id="nameID" class="j-error"/>
 <script type="text/javascript">
-    var o={};
-    o.name="a";
-    o.constructor.prototype.names="b";
-    for(var x in o){
-        console.log(x+":"+o[x]);
-    }
+    var nameText = document.getElementById('nameID');
+    var attr=nameText.attributes;
 </script>
 </body>
 </html>
