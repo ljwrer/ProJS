@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://s1.bbgstatic.com/lib/jquery/1.11.1/jquery.js"></script>
+</head>
+<body>
+<form action="">
+    <input type="text">
+    <input type="reset" value="reset">
+</form>
+<form action="">
+    <input type="text" value="est">
+</form>
+<script src="../js/client.js"></script>
+<script>
+    $(function () {
+        var username = document.createElement("input");
+        username.type = "text";
+        username.value = "Ray";
+        document.forms[0].appendChild(username);
+//        var reset = document.createElement("button");
+//        reset.innerText = "btn"
+//        reset.setAttribute("type", "reset");
+        if (client.browser.ie && client.browser.ie <= 7) {
+//创建一个带 name 特性的 iframe 元素
+            var iframe = document.createElement("<iframe name=\"myframe\"></iframe>");
+//创建 input 元素
+            var input = document.createElement("<input type=\"checkbox\">");
+//创建 button 元素
+            var button = document.createElement("<button type=\"reset\"></button>");
+//创建单选按钮
+            var radio1 = document.createElement("<input type=\"radio\" name=\"choice\" " +
+                    "value=\"1\">");
+            var radio2 = document.createElement("<input type=\"radio\" name=\"choice\" " +
+                    "value=\"2\">");
+            var div = document.createElement("<div id=\"myNewDiv\" class=\"box\"></div >");
+            var reset = document.createElement('<input type=\"reset\" value=\"reset\">');
+            document.forms[0].appendChild(reset);
+        }
+        $(document.forms[1])
+                .append('<input type="reset" value="reset">')
+                .append('<input type="text" value="josua">');
+        $.get("http://127.0.0.1:3000/test/",{
+            header:"Access-Control-Allow-Origin"
+        }).success(function(data){
+            alert(data);
+        })
+    })
+</script>
+</body>
+</html>
