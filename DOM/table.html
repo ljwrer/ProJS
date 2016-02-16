@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table></table>
+<script>
+    window.onload=function(){
+        var t=document.getElementsByTagName("table")[0];
+        var tBody=document.createElement("tbody");
+        t.appendChild(tBody);
+        var caption=t.createCaption();
+        var tHead=t.createTHead();
+        var tFoot=t.createTFoot();
+        tHead.innerHTML="head";
+        tFoot.innerHTML="foot";
+        caption.innerText="标题";
+        var row0=tBody.insertRow(0);
+        row0.insertCell(0);
+        row0.insertCell(1);
+        row0.cells[0].innerHTML="0,0";
+        row0.cells[1].innerHTML="0,1";
+        var row1=tBody.insertRow(1);
+        row1.insertCell(0);
+        row1.insertCell(1);
+        row1.cells[0].innerHTML="1,0";
+        row1.cells[1].innerHTML="1,1";
+    }
+</script>
+</body>
+</html>
