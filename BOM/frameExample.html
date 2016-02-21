@@ -2,17 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Frameset Example</title>
+    <title>frame</title>
 </head>
 <body>
-<div id="name">Ray</div>
-<iframe src="frameExample.html"></iframe>
+<p id="age">16</p>
 <script>
     window.onload=function(){
         var topWin=top;
         var secondWin=top.frames[0];
-        secondWin.document.getElementById("age").innerHTML="18";
+        top.document.getElementById("name").innerHTML="Rmaiy";
     }
+
 </script>
 </body>
 </html>

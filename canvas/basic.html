@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*#drawing {*/
+        /*width: 200px;*/
+        /*height: 200px;*/
+        /*}*/
+    </style>
+</head>
+<body>
+<canvas id="drawing" width="500" height="500">
+    draw
+</canvas>
+
+
+<svg width="200" height="150">
+    <rect x="30" y="30" width="120" height="90" transform="rotate(45)"></rect>
+</svg>
+</body>
+<script>
+    var draw = document.getElementById("drawing");
+    var ctx = draw.getContext('2d');
+    ctx.strokeStyle = "red";
+    //    ctx.fillStyle="#0000ff";
+    //    ctx.fillRect(10,10,50,50);
+    //    ctx.fillStyle="rgba(0,0,255,0.5)";
+    //    ctx.fillRect(30,30,50,50);
+    //    ctx.lineWidth=10;
+    //    ctx.lineCap="square";
+    //    ctx.lineJoin="bevel";
+    //    ctx.strokeRect(50,50,100,100);
+    //    ctx.clearRect(40,40,20,10);
+
+    var drawLine = function (beginX, beginY, endX, endY) {
+        var ctx = draw.getContext('2d');
+        ctx.strokeStyle = "red";
+        ctx.beginPath();
+        ctx.moveTo(beginX, beginY);
+        ctx.lineTo(endX, endY);
+        ctx.stroke();
+    }
+    var startX = 0, startY = 0, endX = 100, endY = 100;
+    var step = function () {
+        drawLine(startX, startY, startX + 10, startY + 10);
+        startX += 10;
+        startY += 10;
+    }
+    var todo = function () {
+        setTimeout(function () {
+            step();
+            if (startX < endX && startY < endY) {
+                todo()
+            }
+        }, 100);
+    }
+    todo();
+
+</script>
+</html>
