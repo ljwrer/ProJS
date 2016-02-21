@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <style>
+        #grand{
+            padding: 100px;
+            width: 600px;
+            height: 600px;
+            background: red;
+        }
+        #parent{
+            background: gray;
+            padding: 50px;
+            width: 400px;
+            height: 400px;
+        }
+        #test{
+            margin: 20px;
+            padding: 50px;
+            border: 10px solid deepskyblue;
+            background: yellowgreen;
+            width: 200px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+<div id="grand">
+    <div id="parent">
+        <div id="test"></div>
+    </div>
+</div>
+<script>
+    var test=document.getElementById("test");
+    for(var x in test){
+        if(/offset/.test(x)){
+            console.log(x+":"+test[x]);
+        }
+    }
+    function real(ele,prop){
+        var propValue=ele[prop];
+        var parent=ele.offsetParent;
+        while (parent){
+            propValue+=parent[prop];
+            parent=parent.offsetParent;
+        }
+        return propValue;
+    }
+    console.log(real(test,"offsetLeft"));
+    console.log(real(test,"offsetTop"));
+</script>
+</body>
+</html>

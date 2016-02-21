@@ -76,6 +76,9 @@
         }
         return result;
     }
+    var leftPos = (typeof window.screenLeft === "number") ? window.screenLeft : window.screenX;
+    var topPos=(typeof window.screenTop === "numer")?window.screenTop : window.screenY;
+    alert(leftPos+":"+topPos);
 </script>
 </body>
 </html>
