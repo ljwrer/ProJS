@@ -1,4 +1,5 @@
 .git 
 .idea
 .sass-cache
-css
+/css
+
