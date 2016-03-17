@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<iframe id="example">hello</iframe>
+<script>
+    var exp=document.getElementById("example");
+    alert(exp.contentDocument === exp.contentWindow.document);
+</script>
+</body>
+</html>

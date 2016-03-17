@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<script>
+
+    var sheet = document.styleSheets[0];
+    var rules = sheet.cssRules || sheet.rules; //取得规则列表
+    var rule = rules[0]; //取得第一条规则
+    alert(rule.selectorText); //"div.box"
+    alert(rule.cssText); //完整的 CSS 代码
+    alert(rule.style.backgroundColor); //"blue"
+    alert(rule.style.width); //"100px"
+    alert(rule.style.height); //"200px
+    function insertRule(sheet, selectorText, cssText, position){
+        if (sheet.insertRule){
+            sheet.insertRule(selectorText + "{" + cssText + "}", position);
+        } else if (sheet.addRule){
+            sheet.addRule(selectorText, cssText, position);
+        }
+    }
+    function deleteRule(sheet, index){
+        if (sheet.deleteRule){
+            sheet.deleteRule(index);
+        } else if (sheet.removeRule){
+            sheet.removeRule(index);
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id="p1"><b>Hello</b> world!</p>
+<script>
+    var p1=document.getElementById("p1"),
+        helloNode = p1.firstChild.firstChild,
+        worldNode = p1.lastChild;
+//    var r1=document.createRange();
+//    var r2=document.createRange();
+//    var hello=p1.lastChild;
+//    r1.selectNode(p1);
+//    r1.selectNodeContents(p1);
+//    r1.setEndBefore(hello);
+    var range = document.createRange();
+
+    range.setStart(helloNode, 2);
+    range.setEnd(worldNode, 3);
+//    range.deleteContents();
+//    alert(range.extractContents())
+//    var fragment = range.cloneContents();
+//    p1.parentNode.appendChild(fragment);
+//    var span = document.createElement("span");
+//    span.style.color = "red";
+//    span.appendChild(document.createTextNode("Inserted text"));
+//    range.insertNode(span);
+    range.selectNode(helloNode);
+    var span = document.createElement("span");
+    span.style.backgroundColor = "yellow";
+    range.surroundContents(span);
+</script>
+</body>
+</html>

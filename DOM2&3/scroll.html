@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <style>
+        .head, .foot {
+            position: absolute;
+            left: 0;
+            right: 0;
+            background: yellowgreen;
+            height: 200px;
+        }
+
+        .foot {
+            bottom: 0;
+        }
+
+        .son {
+            position: fixed;
+            top: 200px;
+            bottom: 200px;
+            left: 0;
+            right: 0;
+            overflow-y: scroll;
+        }
+
+        #d {
+            position: absolute;
+        }
+
+        .content {
+            min-height: 3000px;
+            background: deepskyblue;
+        }
+    </style>
+</head>
+<body>
+<div class="parent">
+    <p class="head">head</p>
+    <div class="son">
+        <div id="d">dd</div>
+        <div class="content">xx</div>
+    </div>
+    <p class="foot">foot</p>
+</div>
+<script>
+    //    var content=document.querySelector(".content");
+    //    var son=document.querySelector(".son");
+    //    function info(){
+    //        var content=son;
+    //        console.log("content.scrollHeight:"+content.scrollHeight);
+    //        console.log("content.scrollTop:"+content.scrollTop);
+    //        console.log("content.scrollWidth:"+content.scrollWidth);
+    //        console.log("content.scrollLeft:"+content.scrollLeft);
+    //    }
+    //    son.addEventListener("scroll",info);
+    //    var step=function(){
+    //        if(son.scrollTop<son.scrollHeight/3){
+    //            son.scrollTop+=10;
+    //            animationID=requestAnimationFrame(step)
+    //        }else {
+    //            cancelAnimationFrame(animationID);
+    //        }
+    //    };
+    //    var animationID=requestAnimationFrame(step);
+    //    var animationID=setInterval(step,10);
+    var temp = document.createElement("div");
+    temp.style.cssText = "position:absolute;top:0;left:0";
+    document.body.appendChild(temp);
+    var offset = -temp.getBoundingClientRect().top - temp.scrollTop;
+//    alert(offset)
+    document.body.removeChild(temp);
+    temp = null;
+
+    function getBoundingClientRect(element) {
+        var scrollTop = document.documentElement.scrollTop;
+        var scrollLeft = document.documentElement.scrollLeft;
+        if (element.getBoundingClientRect) {
+            if (typeof arguments.callee.offset != "number") {
+                var temp = document.createElement("div");
+                temp.style.cssText = "position:absolute;left:0;top:0;";
+                document.body.appendChild(temp);
+                arguments.callee.offset = -temp.getBoundingClientRect().top - scrollTop;
+                document.body.removeChild(temp);
+                temp = null;
+            }
+            var rect = element.getBoundingClientRect();
+            var offset = arguments.callee.offset;
+            return {
+                left: rect.left + offset,
+                right: rect.right + offset,
+                top: rect.top + offset,
+                bottom: rect.bottom + offset
+            };
+        } else {
+            var actualLeft = getElementLeft(element);
+            var actualTop = getElementTop(element);
+            return {
+                left: actualLeft - scrollLeft,
+                right: actualLeft + element.offsetWidth - scrollLeft,
+                top: actualTop - scrollTop,
+                bottom: actualTop + element.offsetHeight - scrollTop
+            }
+        }
+    }
+</script>
+</body>
+</html>

@@ -6,18 +6,22 @@
     <link rel="stylesheet" href="../css/reset.css">
     <style>
         #grand{
+            position: relative;
+            margin: 100px;
             padding: 100px;
             width: 600px;
             height: 600px;
             background: red;
         }
         #parent{
+            position: absolute;
             background: gray;
             padding: 50px;
             width: 400px;
             height: 400px;
         }
         #test{
+            position: absolute;
             margin: 20px;
             padding: 50px;
             border: 10px solid deepskyblue;
@@ -40,17 +44,17 @@
             console.log(x+":"+test[x]);
         }
     }
-    function real(ele,prop){
-        var propValue=ele[prop];
+    console.log(realOffset(test,"offsetLeft"));
+    console.log(realOffset(test,"offsetTop"));
+    function realOffset(ele,prop){
+        var value=ele[prop];
         var parent=ele.offsetParent;
-        while (parent){
-            propValue+=parent[prop];
+        while(parent !== null){
+            value+=parent[prop];
             parent=parent.offsetParent;
         }
-        return propValue;
+        return value;
     }
-    console.log(real(test,"offsetLeft"));
-    console.log(real(test,"offsetTop"));
 </script>
 </body>
 </html>
