@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="text">
+        <input type="text">
+        <button>1</button>
+    </form>
+</body>
+<script>
+    document.querySelector("form").addEventListener("submit",function (event) {
+        event.preventDefault();
+    })
+    document.forms[0].addEventListener("keypress",function (event) {
+        if(event.charCode===13){
+            if(event.target.nextElementSibling.nodeName.toLocaleLowerCase() === "input"){
+                event.target.nextElementSibling.focus();
+            }else if(event.target.nextElementSibling.nodeName.toLocaleLowerCase() === "button"){
+                this.submit();
+            }
+        }
+    })
+    document.querySelector("input").addEventListener("change",function (event) {
+        console.log(event);
+    })
+</script>
+</html>
