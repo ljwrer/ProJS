@@ -5,27 +5,50 @@
     <title>Document</title>
 </head>
 <body>
-    <form>
-        <input type="text">
-        <input type="text">
-        <button>1</button>
-    </form>
+<form>
+    <textarea id="ta1"></textarea>
+    <input id="ipt1" type="text">
+    <input id="ipt2" type="text">
+    <button id="btn1">1</button>
+    <button id="btn2">2</button>
+    <button id="btn3">3</button>
+</form>
 </body>
 <script>
-    document.querySelector("form").addEventListener("submit",function (event) {
+    var form0 = document.forms[0];
+    var ipt1 = document.getElementById("ipt1");
+    var ipt2 = document.getElementById("ipt2");
+    var btn1 = document.getElementById("btn1");
+    var btn2 = document.getElementById("btn2");
+    var btn3 = document.getElementById("btn3");
+    var ta1=document.getElementById("ta1");
+    document.querySelector("form").addEventListener("submit", function (event) {
         event.preventDefault();
-    })
-    document.forms[0].addEventListener("keypress",function (event) {
-        if(event.charCode===13){
-            if(event.target.nextElementSibling.nodeName.toLocaleLowerCase() === "input"){
+    });
+    document.forms[0].addEventListener("keypress", function (event) {
+        if (event.charCode === 13) {
+            if (event.target.nextElementSibling.nodeName.toLocaleLowerCase() === "input") {
                 event.target.nextElementSibling.focus();
-            }else if(event.target.nextElementSibling.nodeName.toLocaleLowerCase() === "button"){
+            } else if (event.target.nextElementSibling.nodeName.toLocaleLowerCase() === "button") {
                 this.submit();
             }
         }
-    })
-    document.querySelector("input").addEventListener("change",function (event) {
+    });
+    document.querySelector("input").addEventListener("change", function (event) {
         console.log(event);
+    });
+    document.querySelector("input").addEventListener("focus", function (event) {
+        this.select();
+    });
+    document.getElementById("btn2").addEventListener("click", function () {
+        document.forms[0].elements[0].select();
+    });
+    ipt2.addEventListener("input", function () {
+        console.log(this.selectionStart);
+    });
+    btn3.addEventListener("click",function () {
+        ta1.setSelectionRange(0,3);
     })
+
 </script>
 </html>

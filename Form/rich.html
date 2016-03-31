@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<iframe name="richedit" style="height:100px;width:500px;" src="blank.html"></iframe>
+<script src="../js/EventUtil.js"></script>
+<script type="text/javascript">
+    EventUtil.addHandler(window, "load", function(){
+        frames["richedit"].document.designMode = "on";
+    });
+</script>
+</body>
+</html>
