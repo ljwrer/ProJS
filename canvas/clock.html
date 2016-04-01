@@ -9,8 +9,11 @@
 <script>
     var canvas=document.getElementById("canvas");
     var ctx=canvas.getContext("2d");
+    var context=ctx;
     ctx.stokeStyle="deepskyblue";
     ctx.beginPath();
+    context.translate(100,100);
+    context.rotate(0.5);
     ctx.moveTo(250,250);
     ctx.lineTo(210,250);
     ctx.moveTo(250,250);
@@ -20,6 +23,24 @@
     ctx.moveTo(370,250)
     ctx.arc(250,250,120,0,2*Math.PI,false);
     ctx.stroke();
+//    ctx.font = "bold 14px Arial";
+//    ctx.textAlign = "center";
+//    ctx.textBaseline = "middle";
+//    ctx.fillText("12",250,170);
+    //起点对齐
+//    context.textAlign = "start";
+//    context.fillText("12", 250,160);
+    //终点对齐
+//    context.textAlign = "end";
+//    context.fillText("12", 250,180);
+//    var fontSize = 100;
+//    context.font = fontSize + "px Arial";
+//    while(context.measureText("Hello world!").width > 140){
+//        fontSize--;
+//        context.font = fontSize + "px Arial";
+//    }
+//    context.fillText("Hello world!", 150, 150);
+//    context.fillText("Font size is " + fontSize + "px", 250, 250);
 </script>
 </body>
 </html>
