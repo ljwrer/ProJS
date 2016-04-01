@@ -3,15 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <style>
-        /*#drawing {*/
-        /*width: 200px;*/
-        /*height: 200px;*/
-        /*}*/
-    </style>
 </head>
 <body>
-<canvas id="drawing" width="500" height="500">
+<canvas id="drawing" width="500" height="500" style="border: 1px solid deeppink">
     draw
 </canvas>
 
@@ -24,15 +18,15 @@
     var draw = document.getElementById("drawing");
     var ctx = draw.getContext('2d');
     ctx.strokeStyle = "red";
-    //    ctx.fillStyle="#0000ff";
-    //    ctx.fillRect(10,10,50,50);
-    //    ctx.fillStyle="rgba(0,0,255,0.5)";
-    //    ctx.fillRect(30,30,50,50);
-    //    ctx.lineWidth=10;
-    //    ctx.lineCap="square";
-    //    ctx.lineJoin="bevel";
-    //    ctx.strokeRect(50,50,100,100);
-    //    ctx.clearRect(40,40,20,10);
+    ctx.fillStyle="#0000ff";
+    ctx.fillRect(10,10,50,50);
+    ctx.fillStyle="rgba(0,0,255,0.5)";
+    ctx.fillRect(30,30,50,50);
+    ctx.lineWidth=1;
+//    ctx.lineCap="square";
+//    ctx.lineJoin="bevel";
+    ctx.strokeRect(50,50,100,100);
+    ctx.clearRect(40,40,20,20);
 
     var drawLine = function (beginX, beginY, endX, endY) {
         var ctx = draw.getContext('2d');
@@ -42,21 +36,28 @@
         ctx.lineTo(endX, endY);
         ctx.stroke();
     }
-    var startX = 0, startY = 0, endX = 100, endY = 100;
-    var step = function () {
-        drawLine(startX, startY, startX + 10, startY + 10);
-        startX += 10;
-        startY += 10;
-    }
-    var todo = function () {
-        setTimeout(function () {
+    var startX = 0, startY = 0, endX = 500, endY = 500;
+    var todo = function (cb) {
+        var step = function () {
+            drawLine(startX, startY, startX + 10, startY + 10);
+            startX += 5;
+            startY += 5;
+        };
+        requestAnimationFrame(function () {
             step();
             if (startX < endX && startY < endY) {
-                todo()
+                todo(cb)
+            }else {
+                cb();
             }
-        }, 100);
-    }
-    todo();
+        });
+    };
+    todo(function () {
+        var url=draw.toDataURL("image/png");
+        var image=new Image();
+        image.src=url;
+        document.body.appendChild(image);
+    });
 
 </script>
 </html>

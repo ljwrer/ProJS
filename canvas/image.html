@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img id="avatar" src="../img/avatar.jpg">
+<canvas id="canvas" height="500" width="500" style="border: 1px solid pink"></canvas>
+<script>
+    window.onload=function () {
+        var canvas=document.getElementById("canvas");
+        var ctx=canvas.getContext("2d");
+        var avatar=document.getElementById("avatar");
+        ctx.drawImage(avatar,65,65,40,40,300,300,100,100);
+    }
+
+</script>
+</body>
+</html>

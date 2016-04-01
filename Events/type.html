@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<img src="../img/line.png" style="height: 3000px">-->
+<div id="wrapper"><input type="text"></div>
+<script>
+//document.querySelector("img").onload=function () {
+//    alert(event)
+//}
+//    window.onresize=function () {
+//        console.log(1)
+//    }
+//    window.onscroll=function () {
+//        console.log(document.documentElement.scrollTop);
+//    }
+    document.querySelector("input").onblur=function () {
+        this.style.borderColor="blue";
+    }
+    document.querySelector("input").onfocus=function () {
+        this.style.borderColor="red"
+    }
+    document.getElementById("wrapper").addEventListener("focusin",function () {
+        console.log(this)
+    })
+</script>
+</body>
+</html>

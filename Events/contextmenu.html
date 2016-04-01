@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ContextMenu Event Example</title>
+</head>
+<body>
+<div id="myDiv">Right click or Ctrl+click me to get a custom context menu.
+    Click anywhere else to get the default context menu.</div>
+<ul id="myMenu" style="position:absolute;visibility:hidden;background-color:
+silver">
+    <li><a href="http://www.nczonline.net">Nicholas’ site</a></li>
+    <li><a href="http://www.wrox.com">Wrox site</a></li>
+    <li><a href="http://www.yahoo.com">Yahoo!</a></li>
+</ul>
+<script src="../js/EventUtil.js"></script>
+<script>
+    EventUtil.addHandler(window, "load", function(event){
+        var div = document.getElementById("myDiv");
+        EventUtil.addHandler(div, "contextmenu", function(event){
+            event = EventUtil.getEvent(event);
+            EventUtil.preventDefault(event);
+            var menu = document.getElementById("myMenu");
+            menu.style.left = event.clientX + "px";
+            menu.style.top = event.clientY + "px";
+            menu.style.visibility = "visible";
+        });
+        EventUtil.addHandler(document, "click", function(event){
+            document.getElementById("myMenu").style.visibility = "hidden";
+        });
+    });
+    EventUtil.addHandler(window, "beforeunload", function(event){
+//        event = EventUtil.getEvent(event);
+//        var message = "I'm really going to miss you if you go.";
+//        event.returnValue = message;
+//        return message;
+    });
+    var img=document.createElement("img");
+    img.src="../img/line.png";
+    (function(){
+        var showCount = 0;
+        EventUtil.addHandler(window, "load", function(){
+            alert("Load fired");
+        });
+        EventUtil.addHandler(window, "pageshow", function(){
+            showCount++;
+            alert("Show has been fired " + showCount + " times.");
+        });
+    })();
+</script>
+</body>
+</html>

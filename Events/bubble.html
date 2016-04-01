@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="parent">
+    <p>1</p>
+    <div id="son" style="background: deepskyblue;line-height: 100px">son</div>
+    <p>2</p>
+</div>
+<script>
+    var parent=document.getElementById("parent");
+    var son=document.getElementById("son");
+    function show() {
+        console.log(this.id)
+    }
+    parent.addEventListener("click",function(){
+        alert(this.id);
+    },true);
+    parent.addEventListener("click",function(){
+        alert(this.id);
+    });
+    son.addEventListener("click",function(e){
+        alert(this.id);
+    });
+    parent.addEventListener("mouseout",show);
+//    parent.attachEvent("onclick",function(){
+//        alert(event.srcElement.id);
+//    });
+//    parent.attachEvent("onclick",function(){
+//        alert(event.srcElement.id);
+//    });
+//
+//    son.attachEvent("onclick",function(e){
+//        alert(event.srcElement.id);
+//    });
+//    son.addEventListener("click",function(e){
+//        alert(2);
+//    })
+</script>
+</body>
+</html>

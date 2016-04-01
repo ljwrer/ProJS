@@ -1,3 +1,6 @@
+/**
+ * Created by Ray on 2016/3/21.
+ */
 exports.types = {
     "css": "text/css",
     "gif": "image/gif",

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="canvas" style="border: 1px solid deeppink" height="500" width="500"></canvas>
+<script>
+    var canvas=document.getElementById("canvas");
+    var ctx=canvas.getContext("2d");
+    ctx.strokeStyle="pink";
+    ctx.lineWidth="1";
+    var P=function (x,y) {
+        this.x=x;
+        this.y=y;
+    }
+    P.prototype.move=function (x,y) {
+        this.x+=x;
+        this.y+=y;
+    }
+    var p1=new P(63,418);
+    var p2=new P(250,100);
+    var p3=new P(418,421);
+    var t=0;
+    var STEP=0.05;
+    var p4=new P();
+    function b(t) {
+        p4.x=Math.pow((1-t),2)*p1.x+2*t*(1-t)*p2.x+Math.pow(t,2)*p3.x;
+        p4.y=Math.pow((1-t),2)*p1.y+2*t*(1-t)*p2.y+Math.pow(t,2)*p3.y;
+    }
+    var draw=function () {
+        ctx.lineTo(p4.x,p4.y);
+        ctx.stroke();
+    }
+    var step=function () {
+        if(t<1){
+            draw();
+            t+=STEP;
+            b(t);
+        }else {
+            clearInterval(id);
+        }
+    };
+    ctx.beginPath();
+    ctx.moveTo(p1.x,p1.y);
+    var id=setInterval(step,1000/17);
+</script>
+</body>
+</html>
