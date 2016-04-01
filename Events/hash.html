@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="change">changeHash</button>
+<script>
+    var change=document.getElementById("change");
+    change.onclick=function(){
+        location.hash=encodeURIComponent("haha");
+    }
+    window.addEventListener("hashchange",function(event){
+        console.log(event.oldURL);
+        console.log(event.newURL);
+        console.log(location.hash);
+
+    })
+</script>
+</body>
+</html>
