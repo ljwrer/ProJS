@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <style>
+        iframe{
+            border: 1px solid pink;
+        }
+        
+    </style>
+</head>
+<body class="main">
+<input type="text">
+<iframe src="talkBox.html" frameborder="0"></iframe>
+<script>
+    window.onload=function () {
+        var input = document.querySelector("input");
+        window.addEventListener("message",function (event) {
+            input.value=event.origin
+        })
+    }
+</script>
+</body>
+</html>
