@@ -5,14 +5,16 @@
     <title>Title</title>
 </head>
 <body>
-<img id="avatar" src="../img/avatar.jpg">
+<img id="avatar" src="../img/avatar.jpg"  style="display: none">
 <canvas id="canvas" height="500" width="500" style="border: 1px solid pink"></canvas>
 <script>
     window.onload=function () {
         var canvas=document.getElementById("canvas");
         var ctx=canvas.getContext("2d");
         var avatar=document.getElementById("avatar");
-        ctx.drawImage(avatar,65,65,40,40,300,300,100,100);
+        var pattern=ctx.createPattern(avatar,"repeat");
+        ctx.fillStyle=pattern;
+        ctx.fillRect(0,0,500,500);
     }
 </script>
 </body>

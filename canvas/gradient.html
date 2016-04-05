@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="canvas" height="500" width="500" style="border: 1px solid pink"></canvas>
+<script>
+    function  createRectLinerGradient(ctx,x,y,width,height) {
+        return ctx.createLinearGradient(x,y,x+width,y+height);
+    }
+    var canvas=document.getElementById("canvas");
+    var ctx=canvas.getContext("2d");
+    var linerGradient=ctx.createLinearGradient(10,10,110,60);
+    linerGradient.addColorStop(0,"yellow");
+    linerGradient.addColorStop(1,"blue");
+    var radialGradient=ctx.createRadialGradient(150,150,0,150,150,80);
+    radialGradient.addColorStop(0,"yellow");
+    radialGradient.addColorStop(1,"blue");
+    ctx.save();
+    ctx.fillStyle=linerGradient;
+    ctx.fillRect(10,10,100,50);
+    ctx.restore();
+    ctx.save();
+    ctx.fillStyle=radialGradient;
+    ctx.arc(150,150,80,0,Math.PI*2);
+    ctx.fill()
+</script>
+</body>
+</html>

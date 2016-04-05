@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="canvas" height="500" width="500" style="border: 1px solid pink"></canvas>
+<script>
+    var canvas=document.getElementById("canvas");
+    var ctx=canvas.getContext("2d");
+    ctx.save();
+    ctx.shadowColor = "rgba(0, 0, 0, 1)";
+    ctx.shadowOffsetX=10;
+    ctx.shadowOffsetY=10;
+    ctx.shadowBlur=4;
+    ctx.fillStyle="rgba(20,0,255,0.5)";
+    ctx.fillRect(10,10,100,50);
+</script>
+</body>
+</html>
