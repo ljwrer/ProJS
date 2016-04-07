@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button>push</button>
+<button>change</button>
+<button>push2</button>
+<script>
+    var push=document.querySelector("button");
+    var change=push.nextElementSibling;
+    var push2=change.nextElementSibling;
+    push.onclick=function () {
+        history.pushState({name:"a"},"","drag.html");
+    }
+    change.onclick=function () {
+        history.pushState({name:"b"},"","dragList.html");
+    }
+    push2.onclick=function () {
+        history.pushState({name:"c"},"","talkBox.html");
+    }
+    window.addEventListener("popstate",function (event) {
+        var state=event.state;
+        console.log(state);
+        if (state){ //第一个页面加载时 state 为空
+//            processState(state);
+        }
+    })
+</script>
+</body>
+</html>

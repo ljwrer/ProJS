@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <style>
+        .drag{
+            position: absolute;
+            top:100px;
+            left: 100px;
+            width: 100px;
+            height: 100px;
+            background: deepskyblue;
+        }
+        .drop{
+            width: 400px;
+            height: 400px;
+            background: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+<div id="drag" class="drag" draggable="true"></div>
+<div id="drop" class="drop"></div>
+<script src="/js/EventUtil.js"></script>
+<script src="/node_modules/lodash/lodash.js"></script>
+<script>
+    var drop=document.getElementById("drop");
+    EventUtil.addHandler(drop,"dropover",function (event) {
+        EventUtil.preventDefault(event);
+    })
+    EventUtil.addHandler(drop, "dragenter", function(event){
+        EventUtil.preventDefault(event);
+    });
+    EventUtil.addHandler(drop, "drop", function(event){
+        EventUtil.preventDefault(event);
+    });
+    var drag=document.getElementById("drag");
+//    (1) dragstart
+//    (2) drag
+//    (3) dragend
+    var events=["dragstart","drag","dragend"];
+    var addHandlerForDrag=(function () {
+        return function (eventType,fn) {
+            EventUtil.addHandler(drag,eventType,_.isFunction(fn)?fn:function (event) {
+                console.log(event.type);
+            })
+        }
+    })();
+
+    var leftOff,topOff,x,y;
+    addHandlerForDrag(events[0],function (event) {
+        leftOff=parseInt(window.getComputedStyle(drag).left);
+        topOff=parseInt(window.getComputedStyle(drag).top);
+        x=event.x;
+        y=event.y;
+    })
+    addHandlerForDrag(events[2],function (event) {
+        event.target.style.left=leftOff+(event.x-x)+"px";
+        event.target.style.top=topOff+(event.y-y)+"px";
+    })
+</script>
+</body>
+</html>

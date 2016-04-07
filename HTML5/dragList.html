@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/css/reset.css" rel="stylesheet">
+    <style>
+        .drag li{
+            display: inline-block;
+            border: 1px solid pink;
+            width: 100px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+<ul class="drag">
+    <li draggable="true">1</li>
+    <li draggable="true">2</li>
+    <li draggable="true">3</li>
+</ul>
+<ul class="drag">
+    <li draggable="true">a</li>
+    <li draggable="true">u</li>
+    <li draggable="true">o</li>
+</ul>
+<script>
+    var drags=[].slice.call(document.querySelectorAll(".drag"));
+    function isFunction(value){
+        return Object.prototype.toString.call(value) == "[object Function]";
+    }
+    var addHandle=function (type,fn) {
+            drags.forEach(function (drag) {
+                drag.addEventListener(type,isFunction(fn)?fn:function (event) {
+                    if(event.target.nodeName.toLowerCase() == "li"){
+                        console.log(event.type);
+                    }
+                })
+            })
+        };
+//    (1)dragstart
+//    (2) drag
+//    (3) dragend
+//    (1) dragenter
+//    (2) dragover
+//    (3) dragleave 或 drop
+    var events=["dragstart","drag","dragend","dragenter","dragover","dragleave","drop"];
+    events.forEach(addHandle);
+    var preventEvents=events.slice(3,5);
+    preventEvents.forEach(function (type) {
+        addHandle(type,function (event) {
+                event.preventDefault();
+            }
+    )});
+    var from;
+    addHandle(events[0],function (event) {
+        from=event.target;
+        var target=event.target;
+        var text=target.innerText;
+        event.dataTransfer.setData("text",text);
+    })
+    addHandle(events[events.length-1],function (event) {
+        var target=event.target;
+        if(from === target) return false;
+        var text=event.dataTransfer.getData("text");
+        var li=document.createElement("li");
+        li.draggable=true;
+        li.innerText=text;
+        if(target === target.parentNode.lastElementChild){
+            target.parentNode.appendChild(li);
+        }else {
+            target.parentNode.insertBefore(li,target.nextElementSibling);
+        }
+        from.parentNode.removeChild(from);
+    })
+</script>
+</body>
+</html>

@@ -13,13 +13,20 @@
 </head>
 <body class="main">
 <input type="text">
-<iframe src="talkBox.html" frameborder="0"></iframe>
+<iframe id="myframe" src="http://child.com:3000/html5/talkBox.html" frameborder="0"></iframe>
+<button id="send">send</button>
 <script>
     window.onload=function () {
-        var input = document.querySelector("input");
+        var input = document.querySelector("input")
         window.addEventListener("message",function (event) {
-            input.value=event.origin
-        })
+            input.value=event.origin;
+            console.log("p from "+event.origin+" message:"+event.data);
+        });
+        var iframeWindow = document.getElementById("myframe").contentWindow;
+        iframeWindow.postMessage("A secret", "http://child.com:3000");
+        document.getElementById("send").addEventListener("click",function () {
+            iframeWindow.postMessage("message from parent","http://child.com:3000");
+        });
     }
 </script>
 </body>
