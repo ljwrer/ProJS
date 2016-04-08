@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    window.onerror = function(message, url, line){
+        alert(message);
+        return false;
+    };
+    function test() {
+        try{
+            throw new Error("Something bad happened.");
+            return 0;
+        }catch (err){
+            return 1;
+        }finally {
+            return 2;
+        }
+    }
+    var a=test();
+    alert(a)
+
+</script>
+
+</body>
+</html>

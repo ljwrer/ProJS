@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button>button</button>
+<script>
+    document.querySelector("button").onclick = function(){
+        var event = window.event;
+        var e=event;
+        setTimeout(function(){
+            console.log(e);
+            e.returnValue = false; //未找到成员错误
+        }, 1000);
+        event=null;
+    };
+</script>
+</body>
+</html>
