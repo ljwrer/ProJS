@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var xmldom=document.implementation.createDocument("","root",null);
+    xmldom.documentElement.appendChild(xmldom.createElement("child"));
+    var parser=new DOMParser();
+    xmldom=parser.parseFromString("<root><child/></root>", "text/xml");
+    var serializer = new XMLSerializer();
+    var xml = serializer.serializeToString(xmldom);
+</script>
+</body>
+</html>

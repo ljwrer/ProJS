@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var parser=new DOMParser();
+    xmldom=parser.parseFromString("<root><parent><child></child></parent><parent><child></child></parent></root>", "text/xml");
+    var result=xmldom.evaluate("parent/child",xmldom.documentElement, null, XPathResult.ORDERED_NODE_ITERATOR_TYPE, null)
+    if (result !== null) {
+        var node = result.iterateNext();
+        while(node) {
+            alert(node.tagName);
+            node = result.iterateNext();
+        }
+    }
+</script>
+</body>
+</html>
