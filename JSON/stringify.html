@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var book = {
+        title: "Professional JavaScript",
+        authors: [
+            "Nicholas C. Zakas"
+        ],
+        edition: 3,
+        year: 2011
+    };
+    var jsonText = JSON.stringify(book);
+    var jsonText2=JSON.stringify(book,["title","year"]);
+    var jsonText3 = JSON.stringify(book, function(key, value){
+        switch(key){
+            case "authors":
+                return value.join(",")
+            case "year":
+                return 5000;
+            case "edition":
+                return undefined;
+            default:
+                return value;
+        }
+    });
+    var jsonText4 = JSON.stringify(book, null, 4);
+    var jsonText5 = JSON.stringify(book, null, " - -");
+    var book2 = {
+        "title": "Professional JavaScript",
+        "authors": [
+            "Nicholas C. Zakas"
+        ],
+        edition: 3,
+        year: 2011,
+        toJSON: function(){
+            return {
+                "title":this.title
+            };
+        }
+    };
+    var jsonText6 = JSON.stringify(book2);
+    var jsonText7=JSON.stringify(book2,function(key, value){
+        switch(key){
+            case "authors":
+                return value.join(",")
+            case "year":
+                return 5000;
+            case "edition":
+                return undefined;
+            case "title":
+                return "hehe";
+            default:
+                return value;
+        }
+    })
+</script>
+</body>
+</html>
