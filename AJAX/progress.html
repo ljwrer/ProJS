@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="range" value="0">
+<script src="/js/xhr.js"></script>
+<script>
+    var xhr=createXHR();
+    var cb=function (res) {
+        var data=JSON.parse(res);
+        console.log(data);
+    }
+    xhr.onload=function () {
+            if(xhr.status >= 200&&xhr.status<=300||xhr.status==304){
+                cb(xhr.responseText);
+            }else {
+                alert(xhr.status);
+            }
+    }
+    var range=document.querySelector("input[type=range]");
+    xhr.onprogress=function (event) {
+        var allHeaders = xhr.getAllResponseHeaders();
+        console.log(allHeaders);
+        console.log(event.loaded);
+        if(event.lengthComputable&&event.total>0){
+            range.value=(event.loaded/event.total)*100;
+        }
+    }
+    xhr.open("get","/api/data.json");
+    setTimeout(function () {
+        xhr.send(null);
+    },2000);
+</script>
+</body>
+</html>

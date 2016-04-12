@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+    <input type="file" id="upload" accept="image/*">
+    <input type="text">
+    <button>submit</button>
+</form>
+<script>
+    var form=document.forms[0];
+    form.onsubmit=function (event) {
+        event.preventDefault();
+        var data = new FormData(form);
+        var xhr=new XMLHttpRequest();
+        xhr.open("post","/api/data", true);
+        xhr.send(new FormData(form));
+    }
+</script>
+</body>
+</html>

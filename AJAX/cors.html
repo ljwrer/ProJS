@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script src="/js/xhr.js"></script>
+<script>
+    var request=createCORSRequestfunction("get","http://parent.com:3000/api/data.json");
+    if(request){
+        request.onload=function () {
+            console.log(request.responseText);
+        }
+        request.send(null);
+    }
+</script>
+</body>
+</html>
