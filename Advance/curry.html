@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var add=function () {
+        return [].reduce.call(arguments,function (prev,cur) {
+            return prev+cur;
+        })
+    }
+    var cadd=function (a) {
+        return add(3,a);
+    }
+    console.log(cadd(5));
+    var curry=function (fn) {
+        var args=Array.prototype.slice.call(arguments,1);
+        return function () {
+            var innerArgs=Array.prototype.slice.call(arguments);
+            var finalArgs=args.concat(innerArgs);
+            return fn.apply(null,finalArgs)
+        }
+    }
+    var bind=function (fn,ctx) {
+        var args=Array.prototype.slice.call(arguments,2);
+        return function () {
+            var innerArgs=Array.prototype.slice.call(arguments);
+            var finalArgs=args.concat(innerArgs);
+            return fn.apply(ctx,arguments);
+        }
+    }
+    var curryAdd=curry(add,1,2);
+    console.log(curryAdd(3))
+</script>
+</body>
+</html>

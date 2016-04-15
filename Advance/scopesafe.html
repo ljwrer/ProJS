@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Polygon(sides){
+        if (this instanceof Polygon) {
+            this.sides = sides;
+            this.getArea = function(){
+                return 0;
+            };
+        } else {
+            return new Polygon(sides);
+        }
+    }
+    function Rectangle(width, height){
+        if(this instanceof Rectangle){
+            Polygon.call(this, 2);
+            this.width = width;
+            this.height = height;
+            this.getArea = function(){
+                return this.width * this.height;
+            };
+        }else {
+            return new Rectangle(width,height);
+        }
+    }
+    Rectangle.prototype=Object.create(Polygon.prototype,{
+        constructor:{
+            value:Rectangle,
+            enumerable: false,
+            writable: true,
+            configurable: true
+        }
+    });
+    var rect = new Rectangle(5, 10);
+    var rect2=Rectangle(1,2);
+    console.log(rect.sides);
+    console.log(rect2.sides);
+</script>
+</body>
+</html>
