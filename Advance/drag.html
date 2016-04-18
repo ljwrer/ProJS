@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <style>
+        .drag{
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: deepskyblue;
+        }
+    </style>
+</head>
+<body>
+<div id="drag" class="drag"></div>
+<script src="/js/lodash.js"></script>
+<script>
+    var drag=document.getElementById("drag");
+    var style=drag.style;
+    var isDrag=false;
+    var clientX,clientY;
+    drag.addEventListener("mousedown",function (event) {
+        isDrag=true;
+        clientX=event.clientX;
+        clientY=event.clientY;
+    });
+    drag.addEventListener("mouseup",function () {
+        isDrag=false;
+    });
+    document.addEventListener("mousemove",_.throttle(function (event) {
+        if(isDrag){
+            var newClientX=event.clientX;
+            var newClientY=event.clientY;
+            var left=parseInt(style.left)||0;
+            var  top=parseInt(style.top)||0;
+            style.left=left+newClientX-clientX+"px";
+            style.top=top+newClientY-clientY+"px";
+            clientX=newClientX;
+            clientY=newClientY;
+        }
+    },20));
+</script>
+</body>
+</html>

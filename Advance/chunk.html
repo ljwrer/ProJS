@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var chunk=function(array,process,cb,context){
+        var step=function () {
+            setTimeout(function () {
+                var item=array.shift();
+                process.call(context,item);
+                if(array.length>0){
+                    step();
+                }else {
+                    cb(100);
+                }
+            },100)
+        };
+        step();
+    }
+    var a=[];
+    for(var i=0;i<20;i++){
+        a[i]=i;
+    }
+    var promise = new Promise(function(resolve, reject) {
+        chunk(a,function (item) {
+            console.log(item);
+        },resolve);
+    });
+
+   var x=promise.then(function (msg) {
+       console.log(msg)
+   }).then(function () {
+       console.log("xxxx")
+   })
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .test{
+            width: 0;
+            height: 200px;
+            background: deepskyblue;
+            overflow: hidden;
+        }
+        .test p{
+            width: 500px;
+        }
+    </style>
+</head>
+<body>
+<div class="test">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad assumenda atque enim ipsum neque nobis nostrum
+        perspiciatis quasi repellat similique. Accusamus error illum iure labore, laboriosam nostrum pariatur
+        praesentium qui!</p>
+</div>
+<script>
+    "use strict";
+    var qs=function (selector,scope) {
+        return (scope||document).querySelector(selector);
+    };
+    var test=qs(".test");
+    var interval=(function step() {
+        requestAnimationFrame(function () {
+            var width=parseInt(test.style.width)||0;
+            if(width<500){
+                test.style.width=width+4+"px";
+                step();
+            }
+        })
+    });
+    interval();
+</script>
+</body>
+</html>

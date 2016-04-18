@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="/js/lodash.js"></script>
+<script>
+    var processor={
+        timeoutId:null,
+        performProcessing:function () {
+            console.log(1);
+        },
+        process:function () {
+            var self=this;
+            clearTimeout(this.timeoutId);
+            this.timeoutId=setTimeout(function () {
+                self.performProcessing()
+            },100);
+        }
+    }
+//    for(var i=0;i<100;i++){
+//        processor.process();
+//    }
+    var debounce=function (method,timeout,context) {
+        if(method.timeoutId){
+            clearTimeout(method.timeoutId);
+        }
+        method.timeoutId=setTimeout(function () {
+            method.call(context)
+        },timeout)
+    };
+    var debounce2=function (method,timeout,context) {
+        var timeoutId;
+        return function () {
+            if(timeoutId){
+                clearTimeout(timeout);
+            }
+            timeoutId=setTimeout(function () {
+                method.call(context);
+            },timeout)
+        }
+    };
+    var foo=_.throttle(function () {
+        console.log("throttle");
+    },100);
+    var bar=_.debounce(function () {
+        console.log("debounce");
+    },100);
+    for(var i=0;i<10000000;i++){
+        bar();
+        foo();
+    }
+</script>
+</body>
+</html>
