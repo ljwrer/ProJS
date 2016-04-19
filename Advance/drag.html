@@ -16,18 +16,24 @@
 <body>
 <div id="drag" class="drag"></div>
 <script src="/js/lodash.js"></script>
+<script src="/js/event.js"></script>
 <script>
     var drag=document.getElementById("drag");
     var style=drag.style;
     var isDrag=false;
     var clientX,clientY;
+    var dragdrop=new EventEmitter();
     drag.addEventListener("mousedown",function (event) {
         isDrag=true;
         clientX=event.clientX;
         clientY=event.clientY;
+        dragdrop.emit("dragstart",{target: drag,
+                x: event.clientX, y: event.clientY});
     });
     drag.addEventListener("mouseup",function () {
         isDrag=false;
+        dragdrop.emit("dragend",{target: drag,
+            x: event.clientX, y: event.clientY});
     });
     document.addEventListener("mousemove",_.throttle(function (event) {
         if(isDrag){
@@ -39,8 +45,17 @@
             style.top=top+newClientY-clientY+"px";
             clientX=newClientX;
             clientY=newClientY;
+            dragdrop.emit("drag",{target: drag,
+                x: event.clientX, y: event.clientY});
         }
-    },20));
+    },1000/60));
+    function showMsg(event) {
+        console.log("x:"+(-event.target.offsetLeft+event.x));
+        console.log("y:"+(-event.target.offsetTop+event.y));
+    }
+    dragdrop.on("drag",showMsg);
+    dragdrop.on("dragstart",showMsg);
+    dragdrop.on("dragend",showMsg);
 </script>
 </body>
 </html>
