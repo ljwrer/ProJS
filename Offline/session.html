@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="session">session</button>
+<button id="local">local</button>
+<script>
+    document.querySelector("#session").onclick=function () {
+        sessionStorage.name="ray";
+    }
+    document.querySelector("#local").onclick=function () {
+        localStorage.name="ray";
+    }
+</script>
+</body>
+</html>
