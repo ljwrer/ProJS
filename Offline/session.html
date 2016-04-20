@@ -10,10 +10,13 @@
 <script>
     document.querySelector("#session").onclick=function () {
         sessionStorage.name="ray";
-    }
+    };
     document.querySelector("#local").onclick=function () {
         localStorage.name="ray";
-    }
+    };
+    document.addEventListener("storage",function (event) {
+        console.log(event.domain)
+    })
 </script>
 </body>
 </html>
