@@ -5,6 +5,62 @@
     <title>Title</title>
 </head>
 <body>
-<script src="indexedDB.js"></script>
+<!--<script src="indexedDB.js"></script>-->
+<script src="/js/event.js"></script>
+<script src="/js/lodash.js"></script>
+<script>
+    var obj={
+        _a:1,
+        _b:"hello",
+        handlers:{}
+    }
+    obj.__proto__={
+        on:function (type,handler) {
+            if(typeof this.handlers[type] === "undefined"){
+                this.handlers[type]=[];
+            }
+            this.handlers[type].push(handler);
+            return this;
+        },
+        emit:function (type,event) {
+            if(!event.target){
+                event.target=this;
+            }
+            if(Object.prototype.toString.call(this.handlers[type]).slice(8,-1)==="Array"){
+                var handlers=this.handlers[type];
+                for (var i=0;i<handlers.length;i++){
+                    handlers[i](event);
+                }
+            }
+            return this;
+        },
+        remove:function (type,handler) {
+            if(Object.prototype.toString.call(this.handlers[type]).slice(8,-1)==="Array"){
+                for(var i=0;i<this.handlers[type].length;i++){
+                    if(this.handlers[type][i]===handler){
+                        break;
+                    }
+                }
+            }
+            this.handlers[type].splice(i,1);
+            return this;
+        }
+    };
+    Object.defineProperty(obj,"a",{
+        get() {
+            return this._a
+        },
+        set(value){
+            let oldVal=this._a;
+            this.emit("change",{newVal:value,oldVal:oldVal})
+            this._a=value
+        }
+    })
+    obj.on("change",function (event) {
+        console.log("new "+event.newVal)
+        console.log("old "+event.oldVal)
+    })
+
+</script>
 </body>
 </html>
