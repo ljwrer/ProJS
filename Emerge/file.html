@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="content" class="content"></div>
+<div id="progress" class="progress"></div>
+<input id="fileList" type="file" multiple>
+<script>
+    var doc=document;
+    var win=window;
+    var fileList=doc.getElementById("fileList"),
+            content=doc.getElementById("content"),
+            progerss=doc.getElementById("progess");
+    fileList.addEventListener("change",function(event){
+        var files =[].slice.call(event.target.files),
+                i = 0,
+                len = files.length;
+        while (i < len){
+            console.log(files[i].name + " (" + files[i].type + ", " + files[i].size +
+                    " bytes) "+getTime(files[i]));
+            i++;
+        }
+        function getTime(files) {
+            return files.lastModifiedDate?files.lastModifiedDate:""
+        }
+        function isImage(file) {
+            return /image/.test(file.type);
+        }
+        var readerList=[];
+        files.forEach(function (file) {
+            if(isImage(file)){
+                var url=win.URL.createObjectURL(file);
+                 var htmlText='<img src="'+url+'"/>';
+                var text=document.createElement("div");
+                text.innerHTML=htmlText;
+                content.appendChild(text);
+                setTimeout(function () {
+                    win.URL.revokeObjectURL(url)
+                },0);
+            }else {
+                var reader=new FileReader();
+                var blob=file.slice(0,100);
+                reader.readAsText(blob);
+                readerList.push(reader);
+            }
+        });
+        readerList.forEach(function (reader) {
+            reader.onload=function (event) {
+                var target=event.target;
+                var result=target.result;
+                var htmlText='<div>'+result+'</div>';
+                var text=document.createElement("div");
+                text.innerHTML=htmlText;
+                content.appendChild(text);
+            }
+            reader.onprogress=function (event) {
+                if (event.lengthComputable){
+                    console.log(event.loaded + "/" + event.total);
+                }
+            }
+        })
+    });
+</script>
+</body>
+</html>

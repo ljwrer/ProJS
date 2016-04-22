@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    navigator.geolocation.getCurrentPosition(function (position) {
+        console.log("latitude "+position.coords.latitude);
+        console.log("altitude "+position.coords.altitude);
+    },function (error) {
+        console.log("Error code: " + error.code);
+        console.log("Error message: " + error.message);
+    },{
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 25000
+    })
+    var watchId = navigator.geolocation.watchPosition(function(position){
+        console.log(position.coords.latitude+" "+position.coords.longitude);
+    }, function(error){
+        console.log("Error code: " + error.code);
+        console.log("Error message: " + error.message);
+    });
+//    clearWatch(watchId);
+</script>
+</body>
+</html>

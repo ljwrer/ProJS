@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            width: 200px;
+            height: 200px;
+            background: deepskyblue;
+        }
+    </style>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    var win=window;
+    var doc=win.document;
+    function getStyle(ele) {
+        return window.getComputedStyle(ele);
+    }
+    var MOVESTEP=5;
+    var derection=1;
+    var startTime=null;
+    var box=doc.getElementById("box");
+    var boxStyle=getStyle(box);
+    var step=function (timestamp) {
+        if(!startTime) startTime=timestamp||Date.now();
+        var time=timestamp-startTime;
+        startTime=timestamp||Date.now();
+        var width=parseInt(boxStyle.width);
+        if(width<800){
+            box.style.width=width+derection*MOVESTEP+"px";
+        }else {
+            cancelAnimationFrame(animationId)
+            return false;
+        }
+        console.log(time);
+        animationId=requestAnimationFrame(step);
+    }
+    var animationId=requestAnimationFrame(step);
+</script>
+</body>
+</html>

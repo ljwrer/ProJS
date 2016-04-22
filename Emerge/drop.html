@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .drop{
+            width: 300px;
+            height: 300px;
+            background: deepskyblue;
+        }
+    </style>
+</head>
+<body>
+<div id="droptarget" class="drop"></div>
+<div id="content"></div>
+<script>
+    var doc=document;
+    var win=window;
+    var droptarget = doc.getElementById( "droptarget");
+    var  content=doc.getElementById("content");
+    function isImage(file) {
+        return /image/.test(file.type);
+    }
+    function handleEvent(event){
+        var files, i, len;
+        event.preventDefault();
+        if (event.type == "drop"){
+            files = event.dataTransfer.files;
+            i = 0;
+            len = files.length;
+            var data=new FormData();
+            while (i < len){
+                if(isImage(files[i])){
+                    var url=win.URL.createObjectURL(files[i]);
+                    var htmlText='<img src="'+url+'"/>';
+                    var text=document.createElement("div");
+                    text.innerHTML=htmlText;
+                    content.appendChild(text);
+                    data.append("file"+i,files[i]);
+                    setTimeout(function () {
+                        win.URL.revokeObjectURL(url)
+                    },0);
+                }
+                i++;
+            }
+            var xhr=new XMLHttpRequest();
+            xhr.open("post","some url");
+            xhr.send(data);
+        }
+    }
+    droptarget.addEventListener("dragenter",handleEvent);
+    droptarget.addEventListener("dragover",handleEvent);
+    droptarget.addEventListener("drop",handleEvent);
+
+</script>
+</body>
+</html>

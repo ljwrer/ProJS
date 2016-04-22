@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var timing=window.performance.timing
+    console.log(timing.connectEnd-timing.connectStart)
+    console.log(timing.responseEnd-timing.requestStart)
+</script>
+</body>
+</html>
